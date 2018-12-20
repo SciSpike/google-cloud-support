@@ -1,0 +1,8 @@
+deploy:
+  provider: npm
+  email: npm@scispike.com
+  api_key:
+    secure: l1XXD8SJPdoIc8JrugZ6yWCnIxgM88294ZooatxU2CTg4ZCZSzXNaQ+u0YE/vBw2zY0HBTYVfDMdyxxrM5Sg54VGOi9Q1MQPxatQ0IHlN/wZasK2DMfEqOAw1n+pn2omTigiVswwTEghHou0ouCZectQGsmfWY+bon5k15gRX8NwVKlY2YmpcUKbdwa0e8wvWr+qbAgzqYIB8qF+/E9LvvZ2+OlXx7oryoKjYJGVwhEc95zzQLqBtZuaYD/Y9hKAUGSHcm1T9lUH29IhYTzXnxSd2AX6/nNVbppFFPw3g9G02o6eCRuRpgwv7uWQ4wMFtYVe7YIDlBnuMnGcpbNmJRSm2zis9yqvCTLs/8TdxFambhltIEzTAE/WqkFa1t2XDvLMOQzIxjnQUt289h+kaMbPA9OUB31hp8Y/p+PHdAJxW4aeV3TpeK9H0R6Owz3YGp31Zg26gqIlOAgl/tZrjPaS2x5hidnWWPcQ8kFLfCgfCKpjBtGyrYJNTnDWDaWIymcCek+8zi5yMs3u7C1GFKnzsJMH8pHX1ESpjNbVFcCJjxl3Obhu7Kfe3nILFhjzYQE9Xf2J0uP6qK1Cm2Zwy8Mlz9WUdukaiLZuOJ2D12Ziq6H/kCC2Ik2tretLTDpLschw6OgB5BL+1d2cCMXw0SNkTf77oV9LmBwtNQrRm80=
+  on:
+    tags: true
+    repo: SciSpike/google-cloud-support
