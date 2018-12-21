@@ -8,6 +8,7 @@ const moment = require('moment-timezone')
 const { Timestamp } = require('@google-cloud/firestore')
 
 const ObjectNotFoundError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
+const ObjectExistsError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
 const IllegalArgumentError = require('@scispike/nodejs-support').errors.IllegalArgumentError
 const MethodNotImplementedError = require('@scispike/nodejs-support').errors.MethodNotImplementedError
 
@@ -77,8 +78,15 @@ const FirestoreRepository = Trait(s => class extends s {
     this._path = this._collection.path
   }
 
-  async upsert (entity) {
-    return this._tryAsync(async () => this._collection.doc(entity._id).set(this._toDocument(entity), this._setOptions))
+  async insert (entity, options) {
+    if (await this.findById(entity.id)) {
+      throw new ObjectExistsError(`${entity.constructor?.name}@${entity.id}`)
+    }
+    return this.upsert(entity, options)
+  }
+
+  async upsert (entity, options) {
+    return this._tryAsync(async () => this._collection.doc(entity._id).set(this._toDocument(entity), options || this._setOptions))
   }
 
   async findById (id) {
