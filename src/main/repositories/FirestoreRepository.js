@@ -6,6 +6,7 @@ const { Trait } = require('mutrait')
 const { Enum } = require('enumify')
 const moment = require('moment-timezone')
 const { Timestamp } = require('@google-cloud/firestore')
+const uuid = require('uuid/v4')
 
 const ObjectNotFoundError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
 const ObjectExistsError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
@@ -86,10 +87,13 @@ const FirestoreRepository = Trait(s => class extends s {
   }
 
   async upsert (entity, options) {
+    if (!entity._id) entity._id = uuid()
     return this._tryAsync(async () => this._collection.doc(entity._id).set(this._toDocument(entity), options || this._setOptions))
   }
 
   async findById (id) {
+    if (!id) return null
+
     return this._tryAsync(async () => {
       const snapshot = await this._db.doc(this._docpath(id)).get()
       return snapshot.exists && this._fromDocument({ plain: snapshot.data(), setterPrefix: '_', getterPrefix: '_' })
