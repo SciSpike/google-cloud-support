@@ -32,11 +32,11 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.2.5",
-    "@scispike/nodejs-support": "0.1.0-pre.10",
+    "@scispike/nodejs-support": "0.1.0",
     "firebase-admin": "6.4.0",
     "lodash": "4.17.11",
     "moment-timezone": "0.5.23",
-    "mutrait": "1.0.0-pre.11",
+    "mutrait": "1.0.0",
     "uuid": "3.3.2"
   },
   "devDependencies": {
