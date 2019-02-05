@@ -332,7 +332,7 @@ const FirestoreRepository = Trait(s => class extends s {
       let map = (mappers && mappers[key]) || mappers
 
       let e
-      if (map?.enumValues && map.enumValues[0] instanceof Enum) {
+      if (Array.isArray(map?.enumValues) && typeof map?.enumValues[0] === 'object') {
         // then map is a reference to an enum class
         e = map
         map = this._toEnumMapper({ key, from, enumeration: e })
