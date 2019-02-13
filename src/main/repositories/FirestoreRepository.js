@@ -81,7 +81,7 @@ const FirestoreRepository = Trait(s => class extends s {
 
   async insert (entity, options) {
     if (await this.findById(entity.id)) {
-      throw new ObjectExistsError(`${entity.constructor?.name}@${entity.id}`)
+      throw new ObjectExistsError({ msg: `${entity.constructor?.name}@${entity.id}` })
     }
     return this.upsert(entity, options)
   }
@@ -102,7 +102,7 @@ const FirestoreRepository = Trait(s => class extends s {
 
   async getById (id) {
     const it = await this.findById(id)
-    if (!it) throw new ObjectNotFoundError(this._docpath(id))
+    if (!it) throw new ObjectNotFoundError({ msg: this._docpath(id) })
   }
 
   _docpath (...it) {
@@ -172,7 +172,7 @@ const FirestoreRepository = Trait(s => class extends s {
     if (it instanceof Timestamp) it = it.toMillis()
 
     const m = moment.utc(it)
-    if (!m.isValid()) throw new IllegalArgumentError(it)
+    if (!m.isValid()) throw new IllegalArgumentError({ msg: it })
 
     return m
   }
@@ -265,7 +265,7 @@ const FirestoreRepository = Trait(s => class extends s {
    * @return {*}
    */
   _toFirestoreDocument (it) {
-    if (typeof it === 'function') throw new IllegalArgumentError(`functions cannot be converted to a Firestore document`)
+    if (typeof it === 'function') throw new IllegalArgumentError({ msg: `functions cannot be converted to a Firestore document` })
     if (it instanceof Timestamp) return it
     if (Array.isArray(it)) return it.map(it => this._toFirestoreDocument(it))
     if (it instanceof Period || it instanceof DatePeriod) {
@@ -297,7 +297,7 @@ const FirestoreRepository = Trait(s => class extends s {
   }
 
   _fromDocument ({ plain, entity, context = {}, setterPrefix = '' } = {}) {
-    throw new MethodNotImplementedError('FirestoreRepository#_fromDocument')
+    throw new MethodNotImplementedError({ msg: 'FirestoreRepository#_fromDocument' })
   }
 
   /**
