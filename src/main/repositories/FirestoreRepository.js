@@ -8,8 +8,8 @@ const moment = require('moment-timezone')
 const { Timestamp } = require('@google-cloud/firestore')
 const uuid = require('uuid/v4')
 
-const ObjectNotFoundError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
-const ObjectExistsError = require('@scispike/nodejs-support').errors.ObjectNotFoundError
+const ObjectNotFoundError = require('../errors/ObjectNotFoundError')
+const ObjectExistsError = require('../errors/ObjectExistsError')
 const IllegalArgumentError = require('@scispike/nodejs-support').errors.IllegalArgumentError
 const MethodNotImplementedError = require('@scispike/nodejs-support').errors.MethodNotImplementedError
 
