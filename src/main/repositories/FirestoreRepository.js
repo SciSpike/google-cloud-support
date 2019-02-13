@@ -268,7 +268,7 @@ const FirestoreRepository = Trait(s => class extends s {
     if (typeof it === 'function') throw new IllegalArgumentError({ msg: `functions cannot be converted to a Firestore document` })
     if (it instanceof Timestamp) return it
     if (Array.isArray(it)) return it.map(it => this._toFirestoreDocument(it))
-    if (it instanceof Period || it instanceof DatePeriod) {
+    if (it?.constructor?.name === 'Period' || it?.constructor?.name === 'DatePeriod') {
       return this._toPeriodDocument(it)
     }
 
