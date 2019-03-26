@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.2.5",
-    "@scispike/nodejs-support": "1.0.0",
+    "@scispike/nodejs-support": "1.1.0-rc.1",
     "firebase-admin": "6.4.0",
     "lodash": "4.17.11",
     "moment-timezone": "0.5.23",
