@@ -1,6 +1,6 @@
 {
   "name": "@scispike/google-cloud-support",
-  "version": "1.1.0-pre.3",
+  "version": "1.1.0-pre.4",
   "description": "Node.js Development Support library",
   "engines": {
     "node": ">=10.12.0"
