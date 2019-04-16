@@ -1,6 +1,6 @@
 {
   "name": "@scispike/google-cloud-support",
-  "version": "1.0.2-rc.1",
+  "version": "1.0.2",
   "description": "Node.js Development Support library",
   "homepage": "https://github.com/SciSpike/google-cloud-support#readme",
   "repository": {
