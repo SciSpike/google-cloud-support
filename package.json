@@ -2,6 +2,16 @@
   "name": "@scispike/google-cloud-support",
   "version": "1.0.2-rc.1",
   "description": "Node.js Development Support library",
+  "homepage": "https://github.com/SciSpike/google-cloud-support#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SciSpike/google-cloud-support.git"
+  },
+  "keywords": [
+    "google-cloud",
+    "firestore"
+  ],
+  "license": "MIT",
   "engines": {
     "node": ">=10.12.0"
   },
