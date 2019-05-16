@@ -127,11 +127,15 @@ const FirestoreRepository = Trait(s => class extends s {
       // remember: only return something if you're converting it!
       // see https://github.com/lodash/lodash/issues/2846
 
-      if (it instanceof Enum) return it.name
+      if (this._isEnumLike(it)) return it.name
       if (moment.isMoment(it)) return Timestamp.fromMillis(it.valueOf())
       if (it instanceof Date) return Timestamp.fromDate(it)
       if (it instanceof Timestamp) return it
     }
+  }
+
+  _isEnumLike (it) {
+    return it instanceof Enum || (Array.isArray(it?.enumValues) && typeof it?.enumValues[0] === 'object' && it?.name)
   }
 
   /**
@@ -332,7 +336,7 @@ const FirestoreRepository = Trait(s => class extends s {
       let map = (mappers && mappers[key]) || mappers
 
       let e
-      if (Array.isArray(map?.enumValues) && typeof map?.enumValues[0] === 'object') {
+      if (this._isEnumLike(map)) {
         // then map is a reference to an enum class
         e = map
         map = this._toEnumMapper({ key, from, enumeration: e })
